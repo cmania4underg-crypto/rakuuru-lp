@@ -30,7 +30,7 @@ const PERSONA_FACILITY = "https://d2xsxph8kpxj0f.cloudfront.net/3105196632811565
 const PERSONA_RELIEF = "https://d2xsxph8kpxj0f.cloudfront.net/310519663281156533/LDrsVSa9yTJ55mdpER6zBw/persona5-relief_0e9c028a.jpg";
 
 // CDN URLs — FV背景・お客様の声（ポジティブ・解決後）
-const FV_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663281156533/LDrsVSa9yTJ55mdpER6zBw/fv-bg-sapporo-az3jHYBy9REEmm6W35BUnx.webp";
+const FV_BG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663281156533/LDrsVSa9yTJ55mdpER6zBw/fv-bg-bright-oTY6ALuxddBVXimwf8uUBm.webp";
 const VOICE_RELIEF_HANDS = "https://d2xsxph8kpxj0f.cloudfront.net/310519663281156533/LDrsVSa9yTJ55mdpER6zBw/voice-relief-hands-NswF83gmrqrNkiP8TWd3EB.webp";
 const VOICE_MANSION_BALCONY = "https://d2xsxph8kpxj0f.cloudfront.net/310519663281156533/LDrsVSa9yTJ55mdpER6zBw/voice-mansion-balcony-UpE27CKWsXmeuchGoN3FLP.webp";
 const VOICE_EMPTY_HOUSE_GARDEN = "https://d2xsxph8kpxj0f.cloudfront.net/310519663281156533/LDrsVSa9yTJ55mdpER6zBw/voice-empty-house-garden-89dkGnrDtgYVg2kvNyDFoA.webp";
@@ -353,11 +353,11 @@ export default function Home() {
       </header>
 
       {/* ===== ヒーロー ===== */}
-      <section className="relative bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 overflow-hidden">
-        {/* 背景画像（札幌住宅街空撮） */}
+      <section className="relative overflow-hidden">
+        {/* 背景画像（札幌住宅街・桜・解放感） */}
         <div className="absolute inset-0">
-          <img src={FV_BG} alt="" className="w-full h-full object-cover opacity-25" />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900/80 via-blue-950/75 to-slate-900/85" />
+          <img src={FV_BG} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-900/70 to-slate-900/40" />
         </div>
 
         <div className="container relative z-10 py-12 md:py-16">
@@ -366,8 +366,7 @@ export default function Home() {
             <div className="flex-1 text-white">
               {/* バッジ */}
               <div className="flex flex-wrap gap-2 mb-6">
-                <span className="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">⭐ 年間100件突破</span>
-                <span className="bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">🏆 7年間の実績</span>
+                <span className="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">⭐ 7年間の実績</span>
                 <span className="bg-green-600 text-white text-xs font-bold px-3 py-1 rounded-full">⚡ 最短24時間で現金化</span>
               </div>
 
@@ -417,10 +416,7 @@ export default function Home() {
                 <p className="text-xs font-bold text-primary mb-1">らくうる代表 奥村竜成</p>
                 <p className="text-sm font-bold leading-snug">私が直接、<br />ご相談を伺います！</p>
               </div>
-              {/* 実績バッジ */}
-              <div className="absolute bottom-4 right-0">
-                <img src={BADGE_100} alt="年間100件突破" className="w-24 h-24 object-contain" />
-              </div>
+
             </div>
           </div>
         </div>
@@ -466,23 +462,25 @@ export default function Home() {
             </p>
           </div>
 
-          {/* ペルソナ別悩みカード（新しい物・背景中心画像） */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* ペルソナ別悩みカード（ジグザグレイアウト） */}
+          <div className="space-y-8">
             {worries.map((w, i) => {
               const c = colorMap[w.color];
+              const isEven = i % 2 === 0;
               return (
-                <div key={i} className={`scroll-reveal bg-white rounded-2xl overflow-hidden border ${c.border} shadow-md`} style={{ transitionDelay: `${i * 0.1}s` }}>
+                <div key={i} className={`scroll-reveal bg-white rounded-2xl overflow-hidden border ${c.border} shadow-md flex flex-col md:flex-row ${isEven ? '' : 'md:flex-row-reverse'}`} style={{ transitionDelay: `${i * 0.1}s` }}>
                   {/* 画像エリア */}
-                  <div className="relative h-52 overflow-hidden">
+                  <div className="relative md:w-2/5 h-56 md:h-auto overflow-hidden flex-shrink-0">
                     <img src={w.image} alt={w.title} className="w-full h-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4">
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent md:bg-gradient-to-r md:from-transparent md:to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 md:hidden">
                       <span className={`${c.tag} text-white text-xs font-bold px-2 py-0.5 rounded`}>{w.title}</span>
                     </div>
                   </div>
                   {/* テキストエリア */}
-                  <div className="p-5">
-                    <p className="font-black text-slate-900 text-base mb-2 leading-snug whitespace-pre-line">{w.headline}</p>
+                  <div className="p-6 flex-1 flex flex-col justify-center">
+                    <span className={`hidden md:inline-flex self-start ${c.badge} text-xs font-bold px-3 py-1 rounded-full mb-3`}>{w.title}</span>
+                    <p className="font-black text-slate-900 text-lg md:text-xl mb-3 leading-snug whitespace-pre-line">{w.headline}</p>
                     <p className="text-gray-600 text-sm leading-relaxed">{w.body}</p>
                   </div>
                 </div>
@@ -569,22 +567,27 @@ export default function Home() {
             <p className="text-blue-200 text-sm mt-2">売却にかかる費用はすべて0円。お客様の持ち出しは一切ありません。</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {zeros.map((z, i) => (
-              <div key={i} className="scroll-reveal rounded-xl overflow-hidden bg-slate-800 border border-slate-700 shadow-lg" style={{ transitionDelay: `${i * 0.08}s` }}>
-                {/* サポート画像 */}
-                <div className="relative h-36 overflow-hidden">
-                  <img src={z.image} alt={z.label} className="w-full h-full object-cover opacity-80" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 to-transparent" />
-                  <div className="absolute bottom-2 left-2">
-                    <div className="zero-badge" style={{ width: "2rem", height: "2rem", fontSize: "1rem" }}>0</div>
+              <div key={i} className="scroll-reveal rounded-2xl overflow-hidden bg-slate-800 border border-slate-700 shadow-xl flex flex-col" style={{ transitionDelay: `${i * 0.08}s` }}>
+                {/* サポート画像（大きめ） */}
+                <div className="relative h-48 overflow-hidden flex-shrink-0">
+                  <img src={z.image} alt={z.label} className="w-full h-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-slate-900/20 to-transparent" />
+                  {/* 0円バッジ（中央上部） */}
+                  <div className="absolute top-3 right-3">
+                    <div className="zero-badge">0</div>
+                  </div>
+                  {/* ラベル（画像下部） */}
+                  <div className="absolute bottom-0 left-0 right-0 p-3">
+                    <p className="font-black text-white text-base">{z.label}</p>
+                    <p className="text-amber-300 text-xs font-bold">完全0円</p>
                   </div>
                 </div>
                 {/* テキスト */}
-                <div className="p-3">
-                  <p className="font-black text-amber-400 text-sm mb-1">{z.label}</p>
-                  <p className="text-blue-200 text-xs leading-snug mb-2">{z.desc}</p>
-                  <p className="text-slate-400 text-xs leading-relaxed border-t border-slate-700 pt-2">{z.detail}</p>
+                <div className="p-4 flex-1 flex flex-col">
+                  <p className="text-blue-100 text-sm leading-snug mb-3 font-bold">{z.desc}</p>
+                  <p className="text-slate-400 text-xs leading-relaxed border-t border-slate-700 pt-3 flex-1">{z.detail}</p>
                 </div>
               </div>
             ))}
@@ -677,31 +680,38 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-6">
-            {testimonials.map((t, i) => (
-              <div key={i} className="scroll-reveal bg-gray-50 rounded-2xl overflow-hidden border border-gray-100 shadow-sm" style={{ transitionDelay: `${i * 0.1}s` }}>
+          <div className="space-y-8">
+            {testimonials.map((t, i) => {
+              const isEven = i % 2 === 0;
+              return (
+              <div key={i} className="scroll-reveal bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-md flex flex-col md:flex-row" style={{ transitionDelay: `${i * 0.1}s` }}>
                 {/* ペルソナ画像（ポジティブ・解決後） */}
-                <div className="relative h-52 overflow-hidden">
+                <div className="relative md:w-2/5 h-56 md:h-auto overflow-hidden flex-shrink-0">
                   <img
                     src={t.image}
                     alt={t.imageAlt}
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-0 left-0 right-0 p-4">
                     <span className={`${t.tagColor} text-white text-xs font-bold px-2 py-0.5 rounded`}>{t.tag}</span>
                     <p className="text-white font-black text-sm mt-1 leading-snug">{t.persona}</p>
                   </div>
                 </div>
 
-                <div className="p-5">
+                <div className="p-6 flex-1">
+                  {/* 星評価 */}
                   <div className="flex mb-3">
                     {[...Array(5)].map((_, j) => (
                       <Star key={j} className="w-4 h-4 text-amber-400 fill-amber-400" />
                     ))}
                   </div>
-                  <h3 className="font-black text-slate-900 text-base mb-3 leading-snug">{t.title}</h3>
-                  <p className="text-gray-700 text-sm leading-relaxed mb-4">{t.text}</p>
+                  {/* 引用符スタイルのタイトル */}
+                  <div className="relative mb-3">
+                    <span className="absolute -top-2 -left-1 text-5xl text-amber-300 font-serif leading-none select-none">&ldquo;</span>
+                    <h3 className="font-black text-slate-900 text-base leading-snug pl-6 pt-2">{t.title}</h3>
+                  </div>
+                  <p className="text-gray-700 text-sm leading-relaxed mb-4 border-l-4 border-amber-200 pl-3 italic">{t.text}</p>
                   <div className="border-t border-gray-200 pt-3 space-y-1">
                     <div className="flex items-center gap-2 text-xs">
                       <span className="bg-primary text-white px-2 py-0.5 rounded font-bold">{t.price}</span>
@@ -712,7 +722,8 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="scroll-reveal mt-10 text-center">
@@ -871,26 +882,47 @@ export default function Home() {
       </section>
 
       {/* ===== 最終CTA ===== */}
-      <section className="py-16 bg-primary text-white">
-        <div className="container text-center">
-          <h2 className="text-2xl md:text-3xl font-black mb-4" style={{ fontFamily: "'Noto Serif JP', serif" }}>
-            まずは、奥村に相談してみてください。
+      <section className="relative py-20 overflow-hidden">
+        {/* 背景：FV画像を再利用 */}
+        <div className="absolute inset-0">
+          <img src={FV_BG} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-primary/90" />
+        </div>
+        <div className="container relative z-10 text-center text-white">
+          {/* アクセントライン */}
+          <div className="flex items-center justify-center gap-4 mb-6">
+            <div className="h-px bg-amber-400/60 flex-1 max-w-16" />
+            <span className="text-amber-400 text-xs font-bold tracking-widest uppercase">Free Consultation</span>
+            <div className="h-px bg-amber-400/60 flex-1 max-w-16" />
+          </div>
+          <h2 className="text-3xl md:text-4xl font-black mb-4" style={{ fontFamily: "'Noto Serif JP', serif" }}>
+            まずは、奥村に<br className="sm:hidden" />相談してみてください。
           </h2>
-          <p className="text-blue-200 text-sm mb-8 max-w-lg mx-auto">
-            査定・相談は完全無料。しつこい営業電話はしません。<br />
+          <p className="text-blue-100 text-base mb-2 max-w-lg mx-auto">
+            査定・相談は完全無料。しつこい営業電話はしません。
+          </p>
+          <p className="text-blue-200 text-sm mb-10 max-w-lg mx-auto">
             あなたの状況に合わせた最善の方法を、一緒に考えます。
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-lg mx-auto">
-            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="cta-line no-underline flex-1 animate-pulse-gentle">
-              <MessageCircle className="w-5 h-5" />
-              LINEで無料相談（24時間）
+          {/* CTAボタン（大きめ） */}
+          <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-xl mx-auto mb-6">
+            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="cta-line no-underline flex-1 animate-pulse-gentle text-base py-4">
+              <MessageCircle className="w-6 h-6" />
+              LINEで無料相談（24時間受付）
             </a>
-            <a href={`tel:${TEL}`} className="cta-tel no-underline flex-1">
-              <Phone className="w-5 h-5" />
+            <a href={`tel:${TEL}`} className="cta-tel no-underline flex-1 text-base py-4">
+              <Phone className="w-6 h-6" />
               {TEL}
             </a>
           </div>
-          <p className="text-blue-300 text-xs mt-4">通話無料・9:00〜19:00・年中無休</p>
+          <p className="text-blue-300 text-xs">通話無料・9:00〜19:00・年中無休</p>
+          {/* 安心ポイント */}
+          <div className="mt-8 flex flex-wrap justify-center gap-4 text-xs text-blue-200">
+            <span className="flex items-center gap-1"><CheckCircle className="w-3.5 h-3.5 text-green-400" />査定・相談完全無料</span>
+            <span className="flex items-center gap-1"><CheckCircle className="w-3.5 h-3.5 text-green-400" />しつこい営業電話なし</span>
+            <span className="flex items-center gap-1"><CheckCircle className="w-3.5 h-3.5 text-green-400" />片付け・リフォーム不要</span>
+            <span className="flex items-center gap-1"><CheckCircle className="w-3.5 h-3.5 text-green-400" />最短24時間で現金化</span>
+          </div>
         </div>
       </section>
 
@@ -905,17 +937,18 @@ export default function Home() {
       </footer>
 
       {/* ===== スティッキーCTA（モバイル） ===== */}
-      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 shadow-lg p-3">
-        <div className="flex gap-2">
-          <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="cta-line flex-1 no-underline text-sm py-3">
-            <MessageCircle className="w-4 h-4" />
-            LINE相談
+      <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 shadow-2xl">
+        <div className="flex">
+          <a href={LINE_URL} target="_blank" rel="noopener noreferrer" className="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white font-black text-base py-4 hover:bg-green-600 active:bg-green-700 transition-colors no-underline">
+            <MessageCircle className="w-5 h-5" />
+            <span>LINE無料相談</span>
           </a>
-          <a href={`tel:${TEL}`} className="cta-tel flex-1 no-underline text-sm py-3">
-            <Phone className="w-4 h-4" />
-            電話する
+          <a href={`tel:${TEL}`} className="flex-1 flex items-center justify-center gap-2 bg-amber-500 text-white font-black text-base py-4 hover:bg-amber-600 active:bg-amber-700 transition-colors no-underline">
+            <Phone className="w-5 h-5" />
+            <span>今すぐ電話</span>
           </a>
         </div>
+        <div className="text-center text-xs text-gray-400 py-1 bg-gray-50">通話無料・9:00〜19:00・年中無休</div>
       </div>
     </div>
   );
