@@ -344,7 +344,7 @@ export default function Home() {
               <Phone className="w-4 h-4" />
               <span>{TEL}</span>
             </a>
-            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={() => (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'})} className="flex items-center gap-1.5 bg-green-500 text-white font-bold px-3 py-2 rounded text-sm hover:bg-green-600 transition-colors">
+            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); window.open(LINE_URL, '_blank'); if (typeof (window as any).gtag === 'function') { (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'}); } setTimeout(() => { window.location.href = '/thanks'; }, 500); }} className="flex items-center gap-1.5 bg-green-500 text-white font-bold px-3 py-2 rounded text-sm hover:bg-green-600 transition-colors">
               <MessageCircle className="w-4 h-4" />
               <span>LINE相談</span>
             </a>
@@ -386,7 +386,7 @@ export default function Home() {
 
               {/* CTAボタン */}
               <div className="flex flex-col sm:flex-row gap-3 mb-6">
-                <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={() => (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'})} className="cta-line flex-1 text-center no-underline animate-pulse-gentle">
+                <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); window.open(LINE_URL, '_blank'); if (typeof (window as any).gtag === 'function') { (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'}); } setTimeout(() => { window.location.href = '/thanks'; }, 500); }} className="cta-line flex-1 text-center no-underline animate-pulse-gentle">
                   <MessageCircle className="w-5 h-5" />
                   LINEで無料相談（24時間受付）
                 </a>
@@ -491,7 +491,7 @@ export default function Home() {
           <div className="scroll-reveal mt-10 bg-primary/5 border border-primary/20 rounded-2xl p-6 text-center">
             <p className="text-slate-800 font-bold text-base mb-4">こうした状況でも、らくうるなら最短数日で解決できます。</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-lg mx-auto">
-              <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={() => (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'})} className="cta-line no-underline">
+              <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); window.open(LINE_URL, '_blank'); if (typeof (window as any).gtag === 'function') { (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'}); } setTimeout(() => { window.location.href = '/thanks'; }, 500); }} className="cta-line no-underline">
                 <MessageCircle className="w-5 h-5" />
                 今すぐLINEで相談する
               </a>
@@ -543,7 +543,7 @@ export default function Home() {
           <div className="scroll-reveal mt-8 text-center">
             <p className="text-gray-600 mb-4 text-sm">他にもご不安な点は、直接奥村にお聞きください。</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-lg mx-auto">
-              <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={() => (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'})} className="cta-line no-underline">
+              <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); window.open(LINE_URL, '_blank'); if (typeof (window as any).gtag === 'function') { (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'}); } setTimeout(() => { window.location.href = '/thanks'; }, 500); }} className="cta-line no-underline">
                 <MessageCircle className="w-5 h-5" />
                 LINEで奥村に相談する
               </a>
@@ -594,7 +594,7 @@ export default function Home() {
           </div>
 
           <div className="scroll-reveal mt-10 text-center">
-            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={() => (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'})} className="cta-line inline-flex no-underline max-w-sm mx-auto">
+            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); window.open(LINE_URL, '_blank'); if (typeof (window as any).gtag === 'function') { (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'}); } setTimeout(() => { window.location.href = '/thanks'; }, 500); }} className="cta-line inline-flex no-underline max-w-sm mx-auto">
               <MessageCircle className="w-5 h-5" />
               無料で相談してみる
             </a>
@@ -729,7 +729,7 @@ export default function Home() {
           <div className="scroll-reveal mt-10 text-center">
             <p className="text-gray-600 mb-4 text-sm">あなたも、同じ悩みを抱えていませんか？</p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center max-w-lg mx-auto">
-              <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={() => (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'})} className="cta-line no-underline">
+              <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); window.open(LINE_URL, '_blank'); if (typeof (window as any).gtag === 'function') { (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'}); } setTimeout(() => { window.location.href = '/thanks'; }, 500); }} className="cta-line no-underline">
                 <MessageCircle className="w-5 h-5" />
                 LINEで無料相談する
               </a>
@@ -906,7 +906,7 @@ export default function Home() {
           </p>
           {/* CTAボタン（大きめ） */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center max-w-xl mx-auto mb-6">
-            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={() => (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'})} className="cta-line no-underline flex-1 animate-pulse-gentle text-base py-4">
+            <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); window.open(LINE_URL, '_blank'); if (typeof (window as any).gtag === 'function') { (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'}); } setTimeout(() => { window.location.href = '/thanks'; }, 500); }} className="cta-line no-underline flex-1 animate-pulse-gentle text-base py-4">
               <MessageCircle className="w-6 h-6" />
               LINEで無料相談（24時間受付）
             </a>
@@ -939,7 +939,7 @@ export default function Home() {
       {/* ===== スティッキーCTA（モバイル） ===== */}
       <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden bg-white border-t border-gray-200 shadow-2xl">
         <div className="flex">
-          <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={() => (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'})} className="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white font-black text-base py-4 hover:bg-green-600 active:bg-green-700 transition-colors no-underline">
+          <a href={LINE_URL} target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); window.open(LINE_URL, '_blank'); if (typeof (window as any).gtag === 'function') { (window as any).gtag('event', 'conversion', {'send_to': 'AW-17857255508/9SWACPD_kPobENSwgMNC'}); } setTimeout(() => { window.location.href = '/thanks'; }, 500); }} className="flex-1 flex items-center justify-center gap-2 bg-green-500 text-white font-black text-base py-4 hover:bg-green-600 active:bg-green-700 transition-colors no-underline">
             <MessageCircle className="w-5 h-5" />
             <span>LINE無料相談</span>
           </a>
